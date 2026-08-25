@@ -20,7 +20,7 @@ mlp.set_cost_func(cross_entropy, cross_entropy_prime)
 
 epochs = 30
 
-losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 0.4, mini_batch_size= 10)
+losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 0.6, mini_batch_size= 10)
 
 pred = mlp.predict(X_test)
 predicted_classes = np.argmax(pred, axis=1)
