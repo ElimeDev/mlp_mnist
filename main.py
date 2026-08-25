@@ -16,10 +16,11 @@ test_labels = test_data.iloc[:, 0].to_numpy()
 y_test = np.eye(10)[test_labels]
 
 mlp = MLP([X_train.shape[1], 100, 10])
+mlp.set_cost_func(cross_entropy, cross_entropy_prime)
 
 epochs = 30
 
-losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 3, mini_batch_size= 10)
+losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 0.4, mini_batch_size= 10)
 
 pred = mlp.predict(X_test)
 predicted_classes = np.argmax(pred, axis=1)
