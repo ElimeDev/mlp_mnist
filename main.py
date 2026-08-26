@@ -15,13 +15,13 @@ X_test = test_data.iloc[:, 1:].to_numpy() / 255
 test_labels = test_data.iloc[:, 0].to_numpy()
 y_test = np.eye(10)[test_labels]
 
-mlp = MLP([X_train.shape[1], 200, 10])
-mlp.set_hidden_layers_activation(relu, relu_prime)
+mlp = MLP([X_train.shape[1], 100, 10])
+#mlp.set_hidden_layers_activation(relu, relu_prime)
 mlp.set_cost_func(cross_entropy, cross_entropy_prime)
 
 epochs = 60
 
-losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 0.1, mini_batch_size= 10, lambda_= 4)
+losses = mlp.train(X_train, y_train, epochs= epochs, learning_rate= 0.1, mini_batch_size= 10, lambda_= 5)
 
 pred = mlp.predict(X_test)
 predicted_classes = np.argmax(pred, axis=1)
